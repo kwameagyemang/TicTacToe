@@ -35,6 +35,13 @@ h1 {
     
 }
 
+#gameBody {
+    width: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
 .box {
     height: 150px;
     width: 150px;
