@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: var(--Aqua);
+    font-family: sans-serif;
+}
+
+
+:root {
+    --Aqua: #00d9ff77;
+
+
+}
+
+
+* {
+    box-sizing: border-box;
+
+}
