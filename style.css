@@ -1,13 +1,14 @@
 body {
     margin: 0;
     padding: 0;
-    color: var(--Aqua);
+    color: var(--midnightBlue);
     font-family: sans-serif;
+    background-color: #66CDAA;
 }
 
 
 :root {
-    --Aqua: #00d9ff77;
+    --midnightBlue: #808080;
 
 
 }
