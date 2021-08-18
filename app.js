@@ -20,6 +20,7 @@ const gameBody = () => {
 
         }
         box.style =ticTacBox;
+        box.addEventListener('click', boxClicked)
     });
 };
 
