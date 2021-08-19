@@ -49,14 +49,32 @@ const boxClicked = (e) => {
 
 const playerHasWon = () => {
     if(spaces[0] === currentPlayer){
-        if (spaces [1] === currentPlayer && spaces[2] === player){
-            console.log(`${currentPlayer} wins up top.`)
+        if (spaces [1] === currentPlayer && spaces[2] === currentplayer){
+            console.log(`${currentPlayer} wins at top.`)
+            return true;
+        }
+        if (spaces [3] === currentPlayer && spaces[6] === currentplayer){
+            console.log(`${currentPlayer} wins on the left.`)
+            return true;
+        }
+        if (spaces [4] === currentPlayer && spaces[8] === currentplayer){
+            console.log(`${currentPlayer} wins diagonally.`)
             return true;
         }
 
     }
+    if(spaces[8] === currentPlayer){
+            if (spaces [2] === currentPlayer && spaces[5] === currentplayer){
+                console.log(`${currentPlayer} wins on the right.`)
+                return true;
+            }
+            if (spaces [6] === currentPlayer && spaces[7] === currentplayer){
+                console.log(`${currentPlayer} wins on the buttom.`)
+                return true;
+            }
+    }
 
-}
+};
 
 gameBody();
 
