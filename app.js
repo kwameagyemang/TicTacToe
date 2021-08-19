@@ -1,10 +1,11 @@
 const boxes = Array.from(document.getElementsByClassName('box'));
 const playScript = document.getElementById('playScript')
+const restartbutton = document.getElementById(`restartbutton`)
 
-const spaces = [null,null,null,null,null,null,null,null,null]
+const spaces;
 const player1 = "O";
 const player2 = "X";
-let currentPlayer = player1;
+let currentPlayer;
 
 
 const gameBody = () => {
@@ -32,13 +33,12 @@ const gameBody = () => {
 
 const boxClicked = (e) => {
     const id = e.target.id;
-    if(!spaces[id]){
+    if(!spaces[id]) {
         spaces[id] = currentPlayer;
         e.target.innerText = currentPlayer;
 
-        if(playerHasWon()){
+        if(playerHasWon()) {
             playScript.innerText = `${currentPlayer} has won!`;
-            restart();
             return;
         }
         currentPlayer = currentPlayer === player1 ? player2 : player1;
@@ -50,7 +50,7 @@ const boxClicked = (e) => {
 const playerHasWon = () => {
     if(spaces[0] === currentPlayer){
         if (spaces [1] === currentPlayer && spaces[2] === currentplayer){
-            console.log(`${currentPlayer} wins at top.`)
+            console.log(`${currentPlayer} wins up top.`)
             return true;
         }
         if (spaces [3] === currentPlayer && spaces[6] === currentplayer){
@@ -79,12 +79,28 @@ const playerHasWon = () => {
             return true;
         }
         if (spaces [3] === currentPlayer && spaces[5] === currentplayer){
-            console.log(`${currentPlayer} wins on the right.`)
+            console.log(`${currentPlayer} wins horizontally in the right.`)
             return true;
         }
 
     }
 };
+
+restartbutton. addEventListener('click', restart);
+
+const restart = () => {
+    spaces.forEach((space,index) => {
+        space[index] = null;
+    });
+    boxes.forEach((box) => {
+        box.innerText = '';
+    });
+    playScript.innerText = `Let's Play!`;
+    currentPlayer = player1;
+
+}
+
+restart();
 
 gameBody();
 
