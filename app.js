@@ -25,16 +25,17 @@ const gameBody = () => {
             ticTacBox += `border-top: 3px solid var(--grey);`;
 
         }
-        box.style =ticTacBox;
+        box.style = ticTacBox;
         box.addEventListener('click', boxClicked)
     });
 };
 
 const boxClicked = (e) => {
     const id = e.target.id;
+    console.log(id)
     if(!spaces[id]){
         spaces[id] = currentPlayer;
-        e.target.innertext = currentPlayer;
+        e.target.innerText = currentPlayer;
 
         if(playerHasWon()){
             playText.innerText = `${currentPlayer} has won!`;
@@ -43,6 +44,8 @@ const boxClicked = (e) => {
         currentPlayer = currentPlayer === player1 ? player2 : player1;
     }
 };
+
+
 
 const playerHasWon = () => {
     if(spaces[0] === currentPlayer){
@@ -56,4 +59,5 @@ const playerHasWon = () => {
 }
 
 gameBody();
+
 
