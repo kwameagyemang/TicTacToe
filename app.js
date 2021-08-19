@@ -3,9 +3,10 @@ const playText = document.getElementById('playText')
 
 const spaces = [null,null,null,null,null,null,null,null,null]
 const player1 = "O";
-const player1 = "X";
+const player2 = "X";
 let currentPlayer = player1;
 console.log(boxes);
+
 const gameBody = () => {
     boxes.forEach((box,index) => {
         let ticTacBox = '';
@@ -31,25 +32,26 @@ const gameBody = () => {
 
 const boxClicked = (e) => {
     const id = e.target.id;
-    console.log(id);
     if(!spaces[id]){
         spaces[id] = currentPlayer;
         e.target.innertext = currentPlayer;
 
         if(playerHasWon()){
-            playText.innerText = `${currentPlayer} has won`
-
+            playText.innerText = `${currentPlayer} has won!`;
+            return;
         }
-        currentPlayer = currentPlayer === player1
+        currentPlayer = currentPlayer === player1 ? player2 : player1;
     }
 };
 
 const playerHasWon = () => {
-    if (spaces [0] === currentPlayer && spaces[2] === player){
-        console.log(`${currentPlayer} wins up top.`)
-        return true;
-    }
+    if(spaces[0] === currentPlayer){
+        if (spaces [1] === currentPlayer && spaces[2] === player){
+            console.log(`${currentPlayer} wins up top.`)
+            return true;
+        }
 
+    }
 
 }
 
