@@ -1,5 +1,5 @@
 const boxes = Array.from(document.getElementsByClassName('box'));
-console.log(boxes);
+
 
 const gameBody = () => {
     boxes.forEach((box,index) => {
@@ -24,4 +24,6 @@ const gameBody = () => {
     });
 };
 
-gameBody();
+const boxClicked = (e) => {
+    console.log('box was clicked')
+};
