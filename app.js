@@ -1,44 +1,57 @@
+// reference to all of the class of boxes in ans array
 const boxes = Array.from(document.getElementsByClassName('box'));
-const playScript = document.getElementById('playScript');
+// console.log(boxes)
+const gameScript = document.getElementById('gameScript');
 const restartButton = document.getElementById(`restartButton`);
 
 const spaces = [];
+// shows which player selected
 const player1 = "O";
 const player2 = "X";
 let currentPlayer;
 
-
+// function to iterate through each boxes and the  index
 const gameBody = () => {
     boxes.forEach((box,index) => {
-        let ticTacBox = '';
+
+        //start of as empty string 
+    // boxBorder represents the border style (either 1 or two borders for each)
+        let boxBorder = '';
+        // means element on top, and if on top, generate border on the buttom
         if (index < 3){
-            ticTacBox += `border-bottom: 3px solid var(--grey);`;
+            boxBorder += `border-bottom: 3px solid var(--grey);`;
         }
+        // means element on left, and if on left, generate border on the right
         if(index % 3 === 0){
-            ticTacBox += `border-right: 3px solid var(--grey);`;
+            boxBorder += `border-right: 3px solid var(--grey);`;
 
         }
+        // means element on right so generate border on the left
         if(index % 3 === 2){
-            ticTacBox += `border-left: 3px solid var(--grey);`;
+            boxBorder += `border-left: 3px solid var(--grey);`;
 
         }
+        // means element on buttom so generate border on the top
         if(index > 5){
-            ticTacBox += `border-top: 3px solid var(--grey);`;
+            boxBorder += `border-top: 3px solid var(--grey);`;
 
         }
-        box.style = ticTacBox;
+        
+        box.style = boxBorder;
+        // add a listener for all the boxes (listen for click)
         box.addEventListener('click', boxClicked);
     });
 };
 
 const boxClicked = (e) => {
+    // console.log("box was clicked")
     const id = e.target.id;
     if(!spaces[id]) {
         spaces[id] = currentPlayer;
         e.target.innerText = currentPlayer;
 
         if(playerHasWon()) {
-            playScript.innerText = `${currentPlayer} has won!`;
+            gameScript.innerText = `Hurrah! ${currentPlayer} won!`;
             return;
         }
         currentPlayer = currentPlayer === player1 ? player2 : player1;
@@ -95,12 +108,12 @@ const restart = () => {
     boxes.forEach((box) => {
         box.innerText = '';
     });
-    playScript.innerText = `game time!!!`;
+    gameScript.innerText = `game time!!!`;
     currentPlayer = player1;
 
 };
 
-restartButton. addEventListener('click', restart);
+restartButton.addEventListener('click', restart);
 
 restart();
 
