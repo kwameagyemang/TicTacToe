@@ -68,9 +68,10 @@ const boxClicked = (e) => {
 
 
 const playerHasWon = () => {
+    // if the current player have first index then confirm they have other index to make them win
     if(spaces[0] === currentPlayer){
         if (spaces [1] === currentPlayer && spaces[2] === currentPlayer){
-            console.log(`${currentPlayer} wins up top.`);
+            console.log(`${currentPlayer} wins at the  top.`);
             return true;
         }
         if (spaces [3] === currentPlayer && spaces[6] === currentPlayer){
@@ -83,6 +84,7 @@ const playerHasWon = () => {
         }
 
     }
+    // user won if have space on the bottom right
     if(spaces[8] === currentPlayer){
             if (spaces [2] === currentPlayer && spaces[5] === currentPlayer){
                 console.log(`${currentPlayer} wins on the right.`);
@@ -93,6 +95,7 @@ const playerHasWon = () => {
                 return true;
             }
     }
+    // if user have the middle (do they have the top middle or buttom middle)
     if (spaces[4] === currentPlayer) {
         if (spaces [1] === currentPlayer && spaces[7] === currentPlayer){
             console.log(`${currentPlayer} wins vertically in the middle.`);
@@ -107,7 +110,9 @@ const playerHasWon = () => {
 };
 
 
-
+// update all spaces with null
+// all innertext of boxes are set 
+// will update the current player 
 const restart = () => {
     spaces.forEach((space,index) => {
         space[index] = null;
