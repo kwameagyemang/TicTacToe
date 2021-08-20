@@ -57,7 +57,7 @@ const boxClicked = (e) => {
         e.target.innerText = currentPlayer;
 
         if(playerHasWon()) {
-            gameScript.innerText = `Hurrah! ${currentPlayer} won!`;
+            gameScript.innerText = `Hurrah!... '${currentPlayer}' won!`;
             return;
         }
         // set to turnary (if current player is equal to player1 (O) then make the next box player2 (x)
@@ -134,4 +134,20 @@ gameBody();
 
 // window.alert("Welcome to game of love")
 // prompt("Welcome to game of LOVE. type XO to start!")
+
+
+
+// // heres a solution to check for win conditions in another way:
+// const winningCombos = [
+//     [0, 1, 2], [3, 4, 5],[6, 7, 8],[0, 3, 6],
+//     [1, 4, 7],[2, 5, 8],[0, 4, 8], [2, 4, 6]
+// ]
+// // then using array.some to check every condition, then array.every to check each index of the condition and comparing it to the spaces array and currentPlayer
+// function playerHasWon(currentPlayer) {
+//     return winningCombos.some(combo => {
+//         return combo.every(index => {
+//             return spaces[index] === currentPlayer
+//         })
+//     })
+// }
 
