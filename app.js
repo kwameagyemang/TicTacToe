@@ -8,6 +8,7 @@ const spaces = [];
 // shows which player selected
 const player1 = "O";
 const player2 = "X";
+// variable checking to see which player turn it is
 let currentPlayer;
 
 // function to iterate through each boxes and the  index
@@ -43,17 +44,23 @@ const gameBody = () => {
     });
 };
 
+// arrow function to accept and event (e)
+// determins what box does when clicked 
+// when box is clicked determine which player turn it is
 const boxClicked = (e) => {
     // console.log("box was clicked")
     const id = e.target.id;
+    // if there is nothing in the box then update the spaces index with current player
     if(!spaces[id]) {
         spaces[id] = currentPlayer;
+        // set inner text of the actual box to currrent player (x or o)
         e.target.innerText = currentPlayer;
 
         if(playerHasWon()) {
             gameScript.innerText = `Hurrah! ${currentPlayer} won!`;
             return;
         }
+        // set to turnary (if current player is equal to player1 (O) then make the next box player2 (x)
         currentPlayer = currentPlayer === player1 ? player2 : player1;
     }
 };
@@ -108,7 +115,7 @@ const restart = () => {
     boxes.forEach((box) => {
         box.innerText = '';
     });
-    gameScript.innerText = `game time!!!`;
+    gameScript.innerText = `lets play!`;
     currentPlayer = player1;
 
 };
@@ -119,4 +126,7 @@ restart();
 
 gameBody();
 
+
+// window.alert("Welcome to game of love")
+// prompt("Welcome to game of LOVE. type XO to start!")
 
