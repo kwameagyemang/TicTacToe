@@ -1,4 +1,3 @@
-TicTacToe
 The TicTacToe_Game Project
 
 This is a simple game of tic tac toe that I created my javascript,html and css skills. My intentions was to create a game where one player plays against the computer. The game works well enough at the moment but not in a complete stage . 
